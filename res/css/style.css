@@ -1,0 +1,23 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+#header{
+    background-image: url("./../img/header.jpg");
+    min-height: 23em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: 40%;
+}
+
+#header h1{
+    font-size: 4em;
+    font-weight: bold;
+    margin: auto;
+    color: blue;
+}
+
+#regist_form input:invalid{
+    border: 1px solid red;
+}
