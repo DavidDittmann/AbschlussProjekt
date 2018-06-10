@@ -28,11 +28,31 @@
             {
                 include("./utility/val_out.php");
             }
+            if(isset($_GET["add"]))
+            {
+                include("./utility/val_add.php");
+            }
+            if(isset($_GET["kat"]))
+            {
+                include("./utility/val_kat.php");
+            }
+            if(isset($_GET["edit"]))
+            {
+                include("./utility/edit.php");
+            }
         ?>
     </head>
     <body>
         <div id="header" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <h1>Autoshop DittMaster</h1>
+            <h1 class="col-xs-12 col-sm-12 col-md-6 col-lg-6">Autoshop DittMaster</h1>
+            <?php
+                echo '<div id="showStatus" class="pull-right col-xs-6 col-sm-4 col-md-2 col-lg-2">';
+                if(!isset($_COOKIE['user']))
+                    echo 'Sie sind nicht eingeloggt!';
+                else
+                    echo '<script type="text/javascript">getStatus();</script>';
+                echo '</div>';
+            ?>
         </div>
         <div id="nav" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <?php

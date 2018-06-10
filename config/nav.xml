@@ -22,13 +22,6 @@
         <admin>false</admin>
     </item>
     <item>
-        <name>Profil</name>
-        <filename>profil</filename>
-        <anonym>false</anonym>
-        <user>true</user>
-        <admin>true</admin>
-    </item>
-    <item>
         <name>Produkte bearbeiten</name>
         <filename>prod_edit</filename>
         <anonym>false</anonym>

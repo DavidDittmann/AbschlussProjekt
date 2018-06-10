@@ -1,13 +1,13 @@
 <?php
 if(file_exists("config/nav.xml"))
 {
-    log_to_console("nav.xml loading");
     $itemlist=simplexml_load_file("config/nav.xml");
 ?>
     <form id="navi_form">
 <?php
     foreach($itemlist->item as $item)
     {
+        //log_to_console($item->filename);
         if(!isset($_SESSION['user']) && !isset($_COOKIE['user']))
         {
             //ANONYMER USER
@@ -21,7 +21,7 @@ if(file_exists("config/nav.xml"))
         }
         else
         {
-            if((isset($_SESSION['admin'])&&$_SESSION['admin']=="0") || (isset($COOKIE['admin'])&&$_COOKIE['admin']=="0"))
+            if((isset($COOKIE['admin'])&&$_COOKIE['admin']=="0") || (isset($_SESSION['admin'])&&$_SESSION['admin']=="0"))
             {
                 //NORMALER USER
                 if($item->user=="true" && $item->filename!="logout")

@@ -21,3 +21,68 @@
 #regist_form input:invalid{
     border: 1px solid red;
 }
+
+#showStatus{
+    font-size: 2em;
+    margin:0px;
+    padding:0px;
+    font-weight: bold;
+    text-align: center;
+    color: blue;
+    background-color: white;
+}
+
+img.ProdPic{
+    max-width:300px;
+    max-height:200px;
+}
+
+#show_prod_edit th, #show_prod_edit td {
+    text-align: left;
+    padding: 8px;
+}
+
+#show_prod_edit th,#prodview th {
+    background-color: rgb(24, 33, 153);
+    color: white;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+#show_prod_edit table,#prodview table{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2em;
+	width:99%;
+	border: 1px solid black;
+}
+
+#show_prod_edit tr:nth-child(odd),#prodview tr:nth-child(odd)
+{
+	background-color: #9ec0f7
+}
+
+#show_prod_edit .reg_form_input{
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: vertical;
+}
+#show_prod_edit textarea{
+    min-height: 170px;
+}
+
+#show_prod_edit input[type="submit"]
+{
+    font-size: 1.5em;
+    font-weight: bold;
+    width:100%;
+    min-height:100px;
+    background-color: rgb(0, 119, 255);
+}
+
+input.katBtn, input#search{
+    width:100%;
+}

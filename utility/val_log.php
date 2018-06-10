@@ -21,7 +21,7 @@ if(isset($_POST["uname"])&&isset($_POST["pw"]))
         {
             //LOGIN ERFOLGREICH
             $db->disconnect();
-            echo '<script type="text/javascript">alert("LOGIN erfolgreich!");getSide("home");</script>';
+            echo '<script type="text/javascript">alert("LOGIN erfolgreich!");getStatus();getSide("home");</script>';
         }
         else{
             //LOGIN FEHLGESCHLAGEN

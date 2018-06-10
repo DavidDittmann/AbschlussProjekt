@@ -16,6 +16,58 @@ function getSide(str) {
     xmlhttp.send();
 }
 
+function prod(str){
+    if (str.length==0) { 
+        document.getElementById("prodview").innerHTML="";
+        return;
+    }
+    xmlhttp=new XMLHttpRequest();
+    
+    xmlhttp.onreadystatechange=function()
+    {
+        if (this.readyState==4 && this.status==200)
+        {
+            document.getElementById("prodview").innerHTML=this.responseText;
+        }
+    }
+    xmlhttp.open("GET","./utility/prod.php?q="+str,true);
+    xmlhttp.send();
+}
+
+function search(str){
+    if (str.length==0) { 
+        document.getElementById("prodview").innerHTML="";
+        return;
+    }
+    xmlhttp=new XMLHttpRequest();
+    
+    xmlhttp.onreadystatechange=function()
+    {
+        if (this.readyState==4 && this.status==200)
+        {
+            document.getElementById("prodview").innerHTML=this.responseText;
+        }
+    }
+    xmlhttp.open("GET","./utility/search.php?q="+str,true);
+    xmlhttp.send();
+}
+
+function getStatus() {
+    //document.getElementById("showStatus").innerHTML="";
+    
+    xmlhttp=new XMLHttpRequest();
+    
+    xmlhttp.onreadystatechange=function()
+    {
+        if (this.readyState==4 && this.status==200)
+        {
+            document.getElementById("showStatus").innerHTML=this.responseText;
+        }
+    }
+    xmlhttp.open("GET","./utility/getStatus.php",true);
+    xmlhttp.send();
+}
+
 
 function validateReg() {
     var reg_user = /^[a-zA-Z0-9]{4,}$/;
@@ -94,6 +146,83 @@ function validateLog() {
     }
 
     return true;
+}
+
+function validateKat()
+{
+    var kat=document.forms["add_kat_form"]["kat"].value;
+    reg_kat=/^[a-zA-Z]+$/;
+
+    if (!kat.match(reg_kat)) {
+        alert("Kategorie ist nicht konform!");
+        return false;
+    }
+    return true
+}
+
+function validateAdd()
+{
+    var name = document.forms["add_prod_form"]["prod_name"].value;
+    var besch = document.forms["add_prod_form"]["prod_beschreibung"].value;
+    var preis = document.forms["add_prod_form"]["prod_preis"].value;
+    var kat = document.forms["add_prod_form"]["prod_kat"].value;
+    var bewert = document.forms["add_prod_form"]["prod_bewertung"].value;
+    var file = document.forms["add_prod_form"]["prod_file"].value;
+
+    var reg_name = /^[a-zA-Z0-9\s]+$/;
+    var reg_besch = /^[A-Za-z0-9\s-+/*]+$/;
+    var reg_bewert= /^[A-Za-z0-9\s-+/*]{0,}$/;
+    var reg_preis = /^[+-]?([0-9]*[.])?[0-9]+$/; //floatingpoint
+    var reg_kat = /^[a-zA-Z\s]+$/;
+
+    if (!name.match(reg_name)) {
+        alert("Titel ist nicht konform!");
+        return false;
+    }
+    if (!besch.match(reg_besch)) {
+        alert("Beschreibung ist nicht konform!");
+        return false;
+    }
+    if (!preis.match(reg_preis)) {
+        alert("Preis ist nicht konform!");
+        return false;
+    }
+    if (!kat.match(reg_kat)) {
+        alert("Kategorie ist nicht konform!");
+        return false;
+    }
+    if (!bewert.match(reg_bewert)) {
+        alert("Bewertung ist nicht konform!");
+        return false;
+    }
+
+    if (file == '') {
+        alert("Please select an image to upload");  
+        return false;
+    } 
+    else 
+    {
+        var Extension = file.substring(file.lastIndexOf('.') + 1).toLowerCase();
+
+        if (Extension == "gif" || Extension == "png" || Extension == "jpeg" || Extension == "jpg")
+        {
+            //alert("alles ok");
+        }
+        else
+        {
+            alert("Photo only allows file types of GIF, PNG, JPG, JPEG and BMP. ");
+            return false;
+        }
+    }
+    return true;
+}
+
+function ValidateSize(file) {
+    var FileSize = file.files[0].size / 1024 / 1024; // in MB
+    if (FileSize > 2) {
+        $("#fi").val("");
+        alert('File size exceeds 2 MB');
+    }
 }
    
 function DisplayMSG(str){

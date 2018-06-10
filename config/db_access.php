@@ -1,6 +1,6 @@
 <?php
 /* 
- *Autoren: 	David Dittmann & Johannes Neustädter
+ *Autoren: 	David Dittmann
  *Datum:	12.03.2018
  *Version:	1.0
  */
