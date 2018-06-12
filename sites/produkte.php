@@ -10,6 +10,7 @@ $db->disconnect();
 
 <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2">
     <div id="katwahl" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h2>Kategorie</h2>
         <?php foreach($kategorien as $kategorie){ ?>
             <input class="katBtn" type="button" value="<?php echo $kategorie['kategorie']; ?>" name="<?php echo $kategorie['kategorie']; ?>" onclick="prod(this.value);">
         <?php } ?>

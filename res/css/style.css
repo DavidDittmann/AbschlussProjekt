@@ -86,3 +86,250 @@ img.ProdPic{
 input.katBtn, input#search{
     width:100%;
 }
+
+
+#content img{
+    margin-top:50px;
+    margin-bottom: 50px;
+}
+
+#footer{
+    background-color: #9ec0f7;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+#footer .sponsor img{
+    height:150px;
+    border:1px solid black;
+    background-color: white;
+}
+
+#navi_form .nav_button{
+    background-color: #9ec0f7;
+    min-height: 2em;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#navi_form .nav_button:hover{
+    background-color: #84aff3;
+}
+#navi_form .nav_button.active{
+    background-color: #3567b8;
+}
+
+#prodview table{
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding-top:0px;
+}
+
+#katwahl
+{
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border:1px dotted black;
+}
+
+#katwahl h2{
+    font-weight: bold;
+    text-align: center;
+}
+
+#katwahl .katBtn{
+    background-color: rgb(58, 173, 211);
+    min-height: 2em;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0.5em 0 0.5em 0;
+}
+
+#prodsuche #search{
+    border:2px solid blue;
+}
+
+#prodsuche #search input.active{
+    border:2px solid rgb(51, 194, 38);
+}
+
+
+
+#log_form button {
+    background-color: rgb(58, 173, 211);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size:2em;
+    font-weight:bold;
+}
+
+#log_form button:hover {
+    opacity: 0.8;
+}
+
+
+#log_form input[type=text], #log_form input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 10%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+
+
+
+
+
+#regist_form button {
+    background-color: rgb(58, 173, 211);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size:2em;
+    font-weight:bold;
+}
+
+#regist_form button:hover {
+    opacity: 0.8;
+}
+
+
+#regist_form input[type=text], #regist_form input[type=password], #regist_form input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#regist_form label{
+    font-size: 1.5em;
+
+}
+
+
+#wkDiv{
+    min-height: 300px;
+}
+
+
+#show_prod_edit{
+    padding-bottom: 3em;
+    padding-top: 3em;
+}
+
+
+#add_kat_form button {
+    background-color: rgb(58, 173, 211);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    font-size:2em;
+    font-weight:bold;
+}
+
+#add_kat_form button:hover {
+    opacity: 0.8;
+}   
+
+
+#add_kat_form input[type=text], #add_kat_form input[type=password] {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#add_prod_form input[type=text], #add_prod_form input[type=textarea], #add_prod_form select, #add_prod_form input[type=number],#add_prod_form input[type=file] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#add_prod_form label{
+    font-size: 1.5em;
+}
+
+#add_prod_form button{
+    background-color: rgb(58, 173, 211);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size:2em;
+    font-weight:bold;
+}
+
+#add_prod_form button:hover {
+    opacity: 0.8;
+}   
+
+
+
+#logout_form button {
+    background-color: rgb(207, 53, 32);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size:2em;
+    font-weight:bold;
+}
+
+#logout_form button:hover {
+    opacity: 0.8;
+}
+
+#logout_form label{
+    font-size: 1.5em;
+    display:block;
+    text-align:center;
+}
+
+#logout_div{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
