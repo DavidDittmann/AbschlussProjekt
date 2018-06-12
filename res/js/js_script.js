@@ -228,3 +228,44 @@ function ValidateSize(file) {
 function DisplayMSG(str){
     alert(str);
 }
+
+function delCookies(){
+    var user = getCookie("user");
+    var admin = getCookie("admin");
+    var phpsession = getCookie("PHPSESSID");
+
+    if (user != "") {
+        document.cookie = 'user=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }
+    if (admin != "") {
+        document.cookie = 'admin=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }
+    if (phpsession != "") {
+        document.cookie = 'PHPSESSID=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }
+}
+
+window.onbeforeunload = delCookies;
+
+
+function setWK(ProdID){
+    xmlhttp=new XMLHttpRequest();
+    
+    xmlhttp.onreadystatechange=function()
+    {
+        if (this.readyState==4 && this.status==200)
+        {
+            document.getElementById("hidden").innerHTML=this.responseText;
+        }
+    }
+    xmlhttp.open("GET","./utility/setWK.php?q="+ProdID,true);
+    xmlhttp.send();
+}
+
+function setWKBtn(sum){
+    FormObject = document.forms['navi_form'];
+    FormElement = FormObject.elements["warenkorb"];
+
+    FormElement.value = "Warenkorb (" + sum + ")";
+
+}

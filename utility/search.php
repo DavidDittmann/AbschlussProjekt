@@ -17,7 +17,7 @@ foreach($products as $product)
     echo '<td>'.$product['besch'].'</td>';
     echo '<td>'.$product['preis'].'</td>';
     echo '<td>'.$product['bewert'].'</td>';
-    echo '<td><input class="wkBtn" type="button" name="'.$product['id'].'" value="Zum Warenkorb hinzufügen"></td></tr>';
+    echo '<td><input class="wkBtn" type="button" name="'.$product['id'].'" value="Zum Warenkorb hinzufügen" onclick="setWK(this.name)"></td></tr>';
 }
 echo '</table>';
 ?>

@@ -322,7 +322,7 @@ class DB{
         } 
         else
         {
-            echo '<script type="text/javascript">alert("Foto");</script>';
+            //echo '<script type="text/javascript">alert("Foto");</script>';
             $sql='UPDATE produkte SET name=?, bewertung=?, beschreibung=?, preis=?, fotolink=?, fk_kategorie=? where id=?';
             if($statement=$this->dbobject->prepare($sql))
             {
@@ -369,6 +369,21 @@ class DB{
         return $rows;
     }
 
+    public function getProdbyKat($filter)
+    {
+        if($filter !== FALSE)
+        {
+            $result = $this->dbobject->query(
+                'select produkte.id as id,name as name,bewertung as bewert,beschreibung as besch,preis as preis,fotolink as link,kategorie as kategorie from produkte left join kategorien on fk_kategorie=kategorien.id where kategorie like "%'.$filter.'%"');
+        }
+
+        while($row = $result->fetch_assoc())
+        {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+
     public function getKatProd()
     {
         $result = $this->dbobject->query(
@@ -380,10 +395,114 @@ class DB{
         return $rows;
     }
 
-
-    public function addProductWarenkorb()
+    public function isProductWarenkorb($user,$ProdID)
     {
+        $sql='SELECT id as id from users where username="'.$user.'"';
+        if($statement=$this->dbobject->prepare($sql))
+        {
+            $statement->execute();
+            $statement->bind_result($UserID);
+            if($statement->fetch())
+            {
+                $statement->close();
+
+                $sql='SELECT id as id from warenkorb where fk_id_users="'.$UserID.'" and fk_id_produkte="'.$ProdID.'"';
+                if($statement=$this->dbobject->prepare($sql))
+                {
+                    $statement->execute();
+                    if($statement->fetch())
+                    {
+                        $statement->close();
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public function addProductWarenkorb($user,$ProdID)
+    {
+        $sql='SELECT id as id from users where username="'.$user.'"';
+        if($statement=$this->dbobject->prepare($sql))
+        {
+            $statement->execute();
+            $statement->bind_result($UserID);
+            if($statement->fetch())
+            {
+                $statement->close();
+                $s = $this->isProductWarenkorb($user,$ProdID);
+                if($s == true)
+                {
+                    //um 1 erhöhen
+                    $sql='update warenkorb set anzahl = anzahl + 1 where fk_id_users="'.$UserID.'" and fk_id_produkte="'.$ProdID.'"';
+                    if($statement=$this->dbobject->prepare($sql))
+                    {
+                        $status=$statement->execute();
+                        if($status===false)
+                        {
+                            echo '<script type="text/javascript">alert("YesNt");</script>';
+                            $statement->close();
+                            return false;
+                        }
+                        else
+                        {
+                            echo '<script type="text/javascript">alert("OK");</script>';
+                            $statement->close();
+                            return true;
+                        }
+                    }
+                }
+                else
+                {
+                    //neu hinzufügen
+                    $sql='INSERT into warenkorb (fk_id_users,fk_id_produkte,anzahl) VALUES (?,?,1)';
+                    if($statement=$this->dbobject->prepare($sql))
+                    {
+                        $statement->bind_param('ii',$UserID,$ProdID);
+                        $status=$statement->execute();
+                        if($status===false)
+                        {
+                            echo '<script type="text/javascript">alert("YesNt");</script>';
+                            $statement->close();
+                            return false;
+                        }
+                        else
+                        {
+                            echo '<script type="text/javascript">alert("OK");</script>';
+                            $statement->close();
+                            return true;
+                        }
+                    }
+                }
+            }
+            else{
+                $statement->close();
+            }
+        }
         
+    }
+
+    public function anzahlProdukteWarenkorb($user)
+    {
+        $sql='SELECT id as id from users where username="'.$user.'"';
+        if($statement=$this->dbobject->prepare($sql))
+        {
+            $statement->execute();
+            $statement->bind_result($UserID);
+            if($statement->fetch())
+            {
+                $statement->close();
+                $result = $this->dbobject->query(
+                    'SELECT sum(anzahl) as sum FROM `warenkorb` WHERE fk_id_users ='.$UserID);
+        
+                while($row = $result->fetch_assoc())
+                {
+                    $rows[] = $row;
+                    return $rows;
+                }
+            }
+        }
     }
 
     public function deleteProductWarenkorb()
